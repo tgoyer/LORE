@@ -18,7 +18,7 @@ namespace LORE.WebApi.Objects.Configure
             );
             
             config.Routes.MapHttpRoute(
-                "OwinWebApi.BusinessObjects.Routes", 
+                "LORE.WebApi.Objects.Routes", 
                 "api/{controller}/{id}",
                 new { id = RouteParameter.Optional }
             );
