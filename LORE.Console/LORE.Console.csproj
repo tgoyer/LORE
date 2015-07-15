@@ -87,10 +87,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\Mobs\Animals\Bunny.cs" />
+    <Compile Include="Characters\Mobs\Animals\Turtle.cs" />
     <Compile Include="Characters\Mobs\Animals\Wolf.cs" />
     <Compile Include="Characters\Mobs\Animals\Dog.cs" />
     <Compile Include="Characters\Mobs\Animals\Rat.cs" />
-    <Compile Include="Characters\Mobs\Trolls\WarriorTroll.cs" />
+    <Compile Include="Characters\Mobs\Mobs\Goblin.cs" />
+    <Compile Include="Characters\Mobs\Mobs\WarriorTroll.cs" />
+    <Compile Include="Characters\NPCs\Vendor\James.cs" />
     <Compile Include="Characters\Player.cs" />
     <Compile Include="Items\Armor\Chestplate.cs" />
     <Compile Include="Items\Potion\HealthPotion.cs" />
@@ -119,9 +123,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Characters\NPCs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\LORE.Common\LORE.Common.csproj">
       <Project>{518db6c7-3eeb-4832-a0ee-14c64fd5a36c}</Project>

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Characters\CharacterBase.cs" />
     <Compile Include="Characters\MobBase.cs" />
+    <Compile Include="Characters\QuestGiverBase.cs" />
     <Compile Include="Characters\VendorBase.cs" />
     <Compile Include="Items\ArmorBase.cs" />
     <Compile Include="Items\ItemBase.cs" />
