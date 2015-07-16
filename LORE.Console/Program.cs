@@ -11,7 +11,8 @@ namespace Game
     {
         static void Main(string[] args)
         {
-            Player player = new Player("Blargity De Blargplop");
+
+            Player player = new Player ("Eflman");
             player.CurrentHealth = 10;
             player.MaximumHealth = 40;
             player.Money.AddMoney(platinum: 2, copper: 15);
