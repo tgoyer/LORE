@@ -1,24 +1,14 @@
 ﻿using LORE.Common.Enums;
+using LORE.Entities.Misc;
 
 namespace LORE.Entities.Items
 {
     public class ArmorBase : ItemBase
     {
         public ArmorBase(
-            string name,
-            ArmorTypes type,
-            int armorValue,
-            int staminaBoost,
-            int strengthBoost,
-            int agilityBoost,
-            int intelligenceBoost,
-            int wisdomBoost,
-            int platinum = 0,
-            int gold = 0,
-            int silver = 0,
-            int copper = 0
-            )
-            : base(name, platinum, gold, silver, copper)
+            string name, Money money, 
+            ArmorTypes type, int armorValue, int staminaBoost, int strengthBoost, int agilityBoost, int intelligenceBoost, int wisdomBoost
+        ) : base(name, money)
         {
             Type = type;
             ArmorValue = armorValue;
@@ -27,7 +17,6 @@ namespace LORE.Entities.Items
             AgilityBoost = agilityBoost;
             IntelligenceBoost = intelligenceBoost;
             WisdomBoost = wisdomBoost;
-
         }
 
         public ArmorTypes Type { get; set; }

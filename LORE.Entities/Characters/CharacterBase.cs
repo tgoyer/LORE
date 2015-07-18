@@ -7,12 +7,12 @@ namespace LORE.Entities.Characters
     public abstract class CharacterBase
     {
         public CharacterBase() {
-            this.Money = new Money();
-            this.Inventory = new List<ItemBase>();
+            Money = new Money();
+            Inventory = new List<ItemBase>();
         }
 
         public CharacterBase(string name) : this() {
-            this.Name = name;
+            Name = name;
         }
 
         public string Name { get; set; }

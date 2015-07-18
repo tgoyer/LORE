@@ -1,17 +1,14 @@
-﻿namespace LORE.Entities.Items
+﻿using LORE.Entities.Misc;
+
+namespace LORE.Entities.Items
 {
     public class WeaponBase : ItemBase
     {
-        public WeaponBase(
-            string name, 
-            int minimumDamage, int maximumDamage, 
-            int hitModifier, int criticalModifier,
-            int platinum = 0, int gold = 0, int silver = 0, int copper = 0
-        ) : base(name, platinum, gold, silver, copper) {
-            this.MinumumDamage = minimumDamage;
-            this.MaximumDamage = maximumDamage;
-            this.CriticalModifier = criticalModifier;
-            this.HitModifier = hitModifier;
+        public WeaponBase(string name, Money money, int minimumDamage, int maximumDamage, int hitModifier, int criticalModifier) : base(name, money) {
+            MinumumDamage = minimumDamage;
+            MaximumDamage = maximumDamage;
+            CriticalModifier = criticalModifier;
+            HitModifier = hitModifier;
         }
 
         public int MinumumDamage { get; set; }

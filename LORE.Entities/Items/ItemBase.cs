@@ -4,10 +4,10 @@ namespace LORE.Entities.Items
 {
     public class ItemBase
     {
-        public ItemBase(string name, int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
+        public ItemBase(string name, Money money)
         {
             Name = name;
-            Value = Money.ConvertToCopper(platinum, gold, silver, copper);
+            Value = money.Value;
         }
         
         public string Name { get; set; }

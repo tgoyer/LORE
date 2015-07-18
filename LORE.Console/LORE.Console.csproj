@@ -47,7 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Game.Program</StartupObject>
+    <StartupObject>LORE.Console.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Owin">
@@ -87,18 +87,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\Mobs\Animals\Bunny.cs" />
-    <Compile Include="Characters\Mobs\Animals\Turtle.cs" />
-    <Compile Include="Characters\Mobs\Animals\Wolf.cs" />
-    <Compile Include="Characters\Mobs\Animals\Dog.cs" />
-    <Compile Include="Characters\Mobs\Animals\Rat.cs" />
-    <Compile Include="Characters\Mobs\Mobs\Goblin.cs" />
-    <Compile Include="Characters\Mobs\Mobs\WarriorTroll.cs" />
-    <Compile Include="Characters\NPCs\Vendor\James.cs" />
-    <Compile Include="Characters\Player.cs" />
-    <Compile Include="Items\Armor\Chestplate.cs" />
-    <Compile Include="Items\Potion\HealthPotion.cs" />
-    <Compile Include="Items\Weapons\Axe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -132,6 +120,10 @@
     <ProjectReference Include="..\LORE.Entities\LORE.Entities.csproj">
       <Project>{9f98d11d-d9e1-4627-92b7-7973982f9698}</Project>
       <Name>LORE.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LORE.MiddeTier\LORE.MiddeTier.csproj">
+      <Project>{5c18c581-e329-4a3e-a27a-eb6b71b46ee9}</Project>
+      <Name>LORE.MiddeTier</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

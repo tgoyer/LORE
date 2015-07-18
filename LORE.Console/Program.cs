@@ -1,66 +1,116 @@
-﻿using System;
-using Game.Items.Potion;
-using LORE.Console.Characters;
-using LORE.Console.Items.Armor;
-using LORE.Console.Items.Weapons;
+﻿using LORE.Common.Enums;
+using LORE.Entities.Characters;
 using LORE.Entities.Items;
+using LORE.Entities.Items.Potions;
+using LORE.Entities.Mechanics.Rules;
+using LORE.Entities.Misc;
+using LORE.MiddeTier;
+using LORE.MiddeTier.Rules;
 
-namespace Game
+namespace LORE.Console
 {
     class Program
     {
         static void Main(string[] args)
         {
+            #region Test Console App
+            #region Item Creation
+            var fieryAxeOfDoom = new WeaponBase("Fiery Axe Of Doom", new Money(gold: 20), 10, 25, 2, 6);
+            var fieryAxeOfLame = new WeaponBase("Fiery Axe Of Lame", new Money(copper: 2), 1, 2, 0, 0);
+            var greaterHealthPotion = new HealthPotionBase("Greater Health Potion", new Money(silver: 20), 20);
+            var lesserHealthPotion = new HealthPotionBase("Lesser Health Potion", new Money(copper: 20), 10);
+            var iornChestplate = new ArmorBase("Iorn Chestplate", new Money(platinum: 1, gold: 1, silver: 50), ArmorTypes.Chest, 10, 5, 1, 8, 0, 0);
+            #endregion Item Creation
 
-            Player player = new Player ("Eflman");
-            player.CurrentHealth = 10;
-            player.MaximumHealth = 40;
+            #region Player Creation
+            #region Create Player
+            var player = new PlayerBase("Elfman")
+            {
+                CurrentHealth = 10,
+                MaximumHealth = 40,
+                Money = new Money()
+            };
+            #endregion Create Player
+
+            #region Roll Player Stats
+            var roller = new DiceRoller();
+            player.Abilities.Add(new Ability(AbilityType.Strength, roller.D6(3)));
+            player.Abilities.Add(new Ability(AbilityType.Constitution, roller.D6(3)));
+            player.Abilities.Add(new Ability(AbilityType.Dexterity, roller.D6(3)));
+            player.Abilities.Add(new Ability(AbilityType.Intelligence, roller.D6(3)));
+            player.Abilities.Add(new Ability(AbilityType.Wisdom, roller.D6(3)));
+            player.Abilities.Add(new Ability(AbilityType.Charisma, roller.D6(3)));
+            #endregion Roll Player Stats
+
+            #region Player Starter Cash
             player.Money.AddMoney(platinum: 2, copper: 15);
             player.Money.SubtractMoney(silver: 15);
+            #endregion Player Starter Cash
+            #endregion Player Creation
 
-            Axe fieryAxeOfDoom = new Axe("Fiery Axe Of Doom", 10, 25, 2, 6, gold: 20);
-            Axe fieryAxeOfLame = new Axe("Fiery Axe Of Lame", 1, 2, 0, 0, copper: 2);
-            HealthPotion greaterHealthPotion = new HealthPotion("Greater Health Potion", 20, silver: 20);
-            HealthPotion lesserHealthPotion = new HealthPotion("Lesser Health Potion", 10, copper: 20);
-            Chestplate iornChestplate = new Chestplate("Iorn Chestplate", 10, 5, 1, 8, 0, 0, 1, 1, 50, 0);
-            
+            #region Populate Player Inventory
             player.Inventory.Add(fieryAxeOfDoom);
             player.Inventory.Add(fieryAxeOfLame);
             player.Inventory.Add(greaterHealthPotion);
             player.Inventory.Add(lesserHealthPotion);
             player.Inventory.Add(iornChestplate);
-            
-            Console.WriteLine(" Player's HP = {0}/{1}.", player.CurrentHealth, player.MaximumHealth);
-            var potion = (HealthPotion)player.Inventory.Find(i => i.Name == "Greater Health Potion");
+            #endregion Populate Player Inventory
+
+            #region Display Generated Values
+            #region Show Player HPs
+            System.Console.WriteLine(" Player's HP = {0}/{1}.", player.CurrentHealth, player.MaximumHealth);
+            var potion = (HealthPotionBase)player.Inventory.Find(i => i.Name == "Greater Health Potion");
             potion.Consume(player);
             player.Inventory.Remove(potion);
-            Console.WriteLine(" Player's HP = {0}/{1}.", player.CurrentHealth, player.MaximumHealth);
+            System.Console.WriteLine(" Player's HP = {0}/{1}.", player.CurrentHealth, player.MaximumHealth);
+            #endregion Show Player HPs
 
-            Console.WriteLine(
+            #region Show Player Stats
+            System.Console.WriteLine("");
+            System.Console.WriteLine(" Player's Abilities are: ");
+
+            var ruleSet = new AbilityScoreRules();
+            foreach (var a in player.Abilities)
+            {
+                var rule = ruleSet.GetRuleByStatValue(a.Value);
+                System.Console.WriteLine("      {0}: {1} which is {2} ({3}).", a.Type.ToString(), a.Value, rule.Name, rule.Modifier);
+            }
+            System.Console.WriteLine("");
+            #endregion Show Player Stats
+
+            #region Show Player Cash
+            System.Console.WriteLine(
                 "{5} has {0} plat, {1} gold, {2} silver, {3} copper ({4} actual).", 
                 player.Money.Platinum, player.Money.Gold, player.Money.Silver, player.Money.Copper, player.Money.Value, player.Name
             );
-            Console.WriteLine("Inventory:");
+            System.Console.WriteLine("Inventory:");
+            #endregion Show Player Cash
 
-            foreach(ItemBase item in player.Inventory)
+            #region Show Player Inventory
+            foreach (var item in player.Inventory)
             {
-                Console.WriteLine("    * {0} which is worth {1} coppers.", item.Name, item.Value);
+                System.Console.WriteLine("    * {0} which is worth {1} coppers.", item.Name, item.Value);
                 if (item is PotionBase)
                 {
-                    Console.WriteLine("    *** This is a potion! {0} value.", ((PotionBase)item).PotionValue);
+                    var p = (item as PotionBase);
+                    System.Console.WriteLine("    *** This is a potion! {0} value.", p.PotionValue);
                 }
                 if (item is WeaponBase)
                 {
-                    Console.WriteLine("    *** This is a weapon! {0} max damage.", ((WeaponBase)item).MaximumDamage);
+                    var w = (item as WeaponBase);
+                    System.Console.WriteLine("    *** This is a weapon! {0} max damage.", w.MaximumDamage);
                 }
                 if (item is ArmorBase)
                 {
-                    ArmorBase armor = (item as ArmorBase);
-                    Console.WriteLine("    *** This is armor! Stats: Name: {0}; Armor Value: {1}; Agility: {2}; Intelligence: {3}; Stamina: {4}; Strength: {5}; Wisdom: {6};", armor.Name, armor.ArmorValue, armor.AgilityBoost, armor.IntelligenceBoost, armor.StaminaBoost, armor.StrengthBoost, armor.WisdomBoost);
+                    var a = (item as ArmorBase);
+                    System.Console.WriteLine("    *** This is armor! Stats: Name: {0}; Armor Value: {1}; Agility: {2}; Intelligence: {3}; Stamina: {4}; Strength: {5}; Wisdom: {6};", a.Name, a.ArmorValue, a.AgilityBoost, a.IntelligenceBoost, a.StaminaBoost, a.StrengthBoost, a.WisdomBoost);
                 }
             }
+            #endregion Show Player Inventory
+            #endregion Display Generated Values
 
-            Console.ReadLine();
+            System.Console.ReadLine();
+            #endregion Test Console App
         }
     }
 }
