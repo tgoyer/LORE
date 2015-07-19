@@ -14,12 +14,14 @@ namespace LORE.Console
         static void Main(string[] args)
         {
             #region Test Console App
+            var ruleSet = new AbilityScoreRules();
+
             #region Item Creation
             //var fieryAxeOfDoom = new WeaponBase("Fiery Axe Of Doom", new Money(gold: 20), 10, 25, 2, 6);
             //var fieryAxeOfLame = new WeaponBase("Fiery Axe Of Lame", new Money(copper: 2), 1, 2, 0, 0);
             var greaterHealthPotion = new HealthPotionBase("Greater Health Potion", new Money(silver: 20), 20);
             var lesserHealthPotion = new HealthPotionBase("Lesser Health Potion", new Money(copper: 20), 10);
-            var iornChestplate = new ArmorBase("Iorn Chestplate", new Money(platinum: 1, gold: 1, silver: 50), ArmorTypes.Chest, 10, 5, 1, 8, 0, 0);
+            var iornChestplate = new ArmorBase("Iorn Chestplate", new Money(platinum: 1, gold: 1, silver: 50), ArmorType.Chest, 10, 5, 1, 8, 0, 0);
             #endregion Item Creation
 
             #region Player Creation
@@ -33,14 +35,17 @@ namespace LORE.Console
             #endregion Create Player
 
             #region Roll Player Stats
+            // Setup all abilites.  Assign base of 10 to each.
             player.AddAbility(AbilityType.Charisma);
             player.AddAbility(AbilityType.Constitution);
             player.AddAbility(AbilityType.Dexterity);
             player.AddAbility(AbilityType.Intelligence);
             player.AddAbility(AbilityType.Strength);
             player.AddAbility(AbilityType.Wisdom);
-            
-            player.AssignRace(RaceType.Human);
+
+            // Modify abilites based on race and class.  Assign skills.
+            player.AssignRace(RaceType.Halfling);
+            player.AssignClass(ClassType.Rogue);
             #endregion Roll Player Stats
 
             #region Player Starter Cash
@@ -58,6 +63,11 @@ namespace LORE.Console
             #endregion Populate Player Inventory
 
             #region Display Generated Values
+            #region Show Player Race/Class
+            System.Console.WriteLine("Player is a {0} {1}.", player.Race.ToString(), player.Class.ToString());
+            #endregion Show Player Race/Class
+
+
             #region Show Player HPs
             System.Console.WriteLine(" Player's HP = {0}/{1}.", player.CurrentHealth, player.MaximumHealth);
             var potion = (HealthPotionBase)player.Inventory.Find(i => i.Name == "Greater Health Potion");
@@ -69,8 +79,6 @@ namespace LORE.Console
             #region Show Player Stats
             System.Console.WriteLine("");
             System.Console.WriteLine(" Player's Abilities are: ");
-
-            var ruleSet = new AbilityScoreRules();
             foreach (var a in player.Abilities)
             {
                 var rule = ruleSet.GetRuleByStatValue(a.Value);

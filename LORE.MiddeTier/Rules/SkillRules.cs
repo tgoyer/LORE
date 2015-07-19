@@ -7,6 +7,11 @@ namespace LORE.MiddeTier.Rules
 {
     public static class SkillRulesExtensions
     {
+        public static bool SkillExists(this CharacterBase character, SkillType type)
+        {
+            return character.Skills.Exists(s => s.Type == type);
+        }
+
         public static void AddSkill(this CharacterBase character, SkillType type)
         {
             var skill = character.GetSkill(type);
@@ -17,8 +22,11 @@ namespace LORE.MiddeTier.Rules
 
         public static void AddSkill(this CharacterBase character, SkillType type, int value)
         {
-            character.AddSkill(type);
-            character.SetSkillValue(type, value);
+            if ( !character.SkillExists(type) )
+            {
+                character.AddSkill(type);
+                character.SetSkillValue(type, value);
+            }
         }
 
         public static void SetSkillValue(this CharacterBase character, SkillType type, int value)
@@ -66,7 +74,7 @@ namespace LORE.MiddeTier.Rules
                     return AbilityType.Intelligence;
                 case SkillType.LanguageElf:
                     return AbilityType.Intelligence;
-                case SkillType.LanguageGoblin:
+                case SkillType.LanguageHalfling:
                     return AbilityType.Intelligence;
                 case SkillType.LanguageOrc:
                     return AbilityType.Intelligence;

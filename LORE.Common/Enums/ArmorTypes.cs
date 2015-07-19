@@ -1,6 +1,6 @@
 ﻿namespace LORE.Common.Enums
 {
-    public enum ArmorTypes
+    public enum ArmorType
     {
         Arms,
         Boots,
@@ -13,5 +13,14 @@
         Necklace,
         Finger,
         Shoulders
+    }
+
+    public enum ArmorCategoryType
+    {
+        Icons,
+        Shields,
+        HeavyArmor,
+        MediumArmor,
+        LightArmor
     }
 }

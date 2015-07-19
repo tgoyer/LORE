@@ -4,7 +4,7 @@ namespace LORE.MiddeTier
 {
     public class DiceRoller
     {
-        readonly Random rnd = new Random();
+        readonly Random rnd = new Random(Guid.NewGuid().GetHashCode());
         public int D20(int rolls)
         {
             return GetRandom(20, rolls);

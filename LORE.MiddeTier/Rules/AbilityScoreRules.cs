@@ -97,8 +97,7 @@ namespace LORE.MiddeTier.Rules
             var ability = character.GetAbility(type);
             if (ability != null) throw new Exception("Ability is already set.");
 
-            var roller = new DiceRoller();
-            character.Abilities.Add(new Ability(type, roller.D6(3)));
+            character.Abilities.Add(new Ability(type, 10));
         }
 
         public static Ability GetAbility(this CharacterBase character, AbilityType type)
@@ -110,6 +109,18 @@ namespace LORE.MiddeTier.Rules
         {
             var rules = new AbilityScoreRules();
             return rules.GetRuleByStatValue(character.GetAbility(type).Value);
+        }
+
+        public static void ModifyAbilityBy(this CharacterBase character, AbilityType type, int value)
+        {
+            foreach (var t in character.Abilities)
+            {
+                if (t.Type == type)
+                {
+                    t.Value += value;
+                    break;
+                }
+            }
         }
     }
 }

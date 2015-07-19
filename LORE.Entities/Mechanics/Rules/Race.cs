@@ -4,7 +4,7 @@
     {
         Dwarf,
         Elf,
-        Goblin,
+        Halfling,
         Human,
         Orc,
         Other

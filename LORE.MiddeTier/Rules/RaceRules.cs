@@ -21,8 +21,8 @@ namespace LORE.MiddeTier.Rules
                 case RaceType.Elf:
                     AssignElfSkills(character);
                     break;
-                case RaceType.Goblin:
-                    AssignGoblinSkills(character);
+                case RaceType.Halfling:
+                    AssignHalflingSkills(character);
                     break;
                 case RaceType.Human:
                     AssignHumanSkills(character);
@@ -35,70 +35,82 @@ namespace LORE.MiddeTier.Rules
 
         private static void AssignDwarfSkills(CharacterBase character)
         {
-            AddSkill(character, SkillType.LanguageDwarf, 100);
+            character.ModifyAbilityBy(AbilityType.Constitution, 1);
+            character.ModifyAbilityBy(AbilityType.Dexterity, -2);
+            character.ModifyAbilityBy(AbilityType.Strength, 1);
+            character.ModifyAbilityBy(AbilityType.Wisdom, 1);
 
-            AddSkill(character, SkillType.Block, 5);
-            AddSkill(character, SkillType.Concentration, 5);
-            AddSkill(character, SkillType.Fortitude, 10);
-            AddSkill(character, SkillType.Leadership, 5);
-            AddSkill(character, SkillType.Melee, 5);
-            AddSkill(character, SkillType.Resistance, 10);
+            character.AddSkill(SkillType.LanguageDwarf, 100);
+            character.AddSkill(SkillType.LanguageCommon, 25);
+            character.AddSkill(SkillType.Block, 5);
+            character.AddSkill(SkillType.Concentration, 5);
+            character.AddSkill(SkillType.Fortitude, 10);
+            character.AddSkill(SkillType.Leadership, 5);
+            character.AddSkill(SkillType.Melee, 5);
+            character.AddSkill(SkillType.Resistance, 10);
         }
 
         private static void AssignElfSkills(CharacterBase character)
         {
-            AddSkill(character, SkillType.LanguageElf, 100);
+            character.ModifyAbilityBy(AbilityType.Constitution, -1);
+            character.ModifyAbilityBy(AbilityType.Dexterity, 1);
+            character.ModifyAbilityBy(AbilityType.Intelligence, 1);
 
-            AddSkill(character, SkillType.Casting, 10);
-            AddSkill(character, SkillType.Concentration, 5);
-            AddSkill(character, SkillType.Leadership, 5);
-            AddSkill(character, SkillType.Perception, 5);
-            AddSkill(character, SkillType.Ranged, 10);
-            AddSkill(character, SkillType.Survival, 5);
+            character.AddSkill(SkillType.LanguageElf, 100);
+            character.AddSkill(SkillType.LanguageCommon, 25);
+            character.AddSkill(SkillType.Casting, 10);
+            character.AddSkill(SkillType.Concentration, 5);
+            character.AddSkill(SkillType.Leadership, 5);
+            character.AddSkill(SkillType.Perception, 5);
+            character.AddSkill(SkillType.Ranged, 10);
+            character.AddSkill(SkillType.Survival, 5);
         }
 
-        private static void AssignGoblinSkills(CharacterBase character)
+        private static void AssignHalflingSkills(CharacterBase character)
         {
-            AddSkill(character, SkillType.LanguageGoblin, 100);
+            character.ModifyAbilityBy(AbilityType.Charisma, 1);
+            character.ModifyAbilityBy(AbilityType.Constitution, -1);
+            character.ModifyAbilityBy(AbilityType.Dexterity, 2);
+            character.ModifyAbilityBy(AbilityType.Strength, -1);
 
-            AddSkill(character, SkillType.DualWield, 5);
-            AddSkill(character, SkillType.Melee, 5);
-            AddSkill(character, SkillType.Perception, 5);
-            AddSkill(character, SkillType.Ranged, 5);
-            AddSkill(character, SkillType.Reflex, 10);
-            AddSkill(character, SkillType.Thievery, 10);
+            character.AddSkill(SkillType.LanguageHalfling, 100);
+            character.AddSkill(SkillType.LanguageCommon, 25);
+            character.AddSkill(SkillType.DualWield, 5);
+            character.AddSkill(SkillType.Melee, 5);
+            character.AddSkill(SkillType.Perception, 5);
+            character.AddSkill(SkillType.Ranged, 5);
+            character.AddSkill(SkillType.Reflex, 10);
+            character.AddSkill(SkillType.Thievery, 10);
         }
 
         private static void AssignHumanSkills(CharacterBase character)
         {
-            AddSkill(character, SkillType.LanguageCommon, 100);
+            character.ModifyAbilityBy(AbilityType.Charisma, 1);
 
-            AddSkill(character, SkillType.Block, 5);
-            AddSkill(character, SkillType.Fortitude, 5);
-            AddSkill(character, SkillType.Leadership, 10);
-            AddSkill(character, SkillType.Melee, 10);
-            AddSkill(character, SkillType.Ranged, 5);
-            AddSkill(character, SkillType.Survival, 5);
+            character.AddSkill(SkillType.LanguageCommon, 100);
+            character.AddSkill(SkillType.Block, 5);
+            character.AddSkill(SkillType.Fortitude, 5);
+            character.AddSkill(SkillType.Leadership, 10);
+            character.AddSkill(SkillType.Melee, 10);
+            character.AddSkill(SkillType.Ranged, 5);
+            character.AddSkill(SkillType.Survival, 5);
         }
 
         private static void AssignOrcSkills(CharacterBase character)
         {
-            AddSkill(character, SkillType.LanguageOrc, 100);
+            character.ModifyAbilityBy(AbilityType.Charisma, -1);
+            character.ModifyAbilityBy(AbilityType.Intelligence, -2);
+            character.ModifyAbilityBy(AbilityType.Strength, 2);
+            character.ModifyAbilityBy(AbilityType.Constitution, 2);
 
-            AddSkill(character, SkillType.Block, 10);
-            AddSkill(character, SkillType.DualWield, 5);
-            AddSkill(character, SkillType.Fortitude, 10);
-            AddSkill(character, SkillType.Melee, 5);
-            AddSkill(character, SkillType.Resistance, 5);
-            AddSkill(character, SkillType.Survival, 5);
-        }
-
-        private static void AddSkill(CharacterBase character, SkillType type, int value)
-        {
-            if (!(character.Skills.Exists(s => s.Type == type)))
-            {
-                character.AddSkill(type, value);
-            }
+            character.AddSkill(SkillType.LanguageOrc, 100);
+            character.AddSkill(SkillType.LanguageCommon, 25);
+            character.AddSkill(SkillType.Block, 10);
+            character.AddSkill(SkillType.DualWield, 5);
+            character.AddSkill(SkillType.Fortitude, 10);
+            character.AddSkill(SkillType.Melee, 5);
+            character.AddSkill(SkillType.Resistance, 5);
+            character.AddSkill(SkillType.Survival, 5);
         }
     }
 }

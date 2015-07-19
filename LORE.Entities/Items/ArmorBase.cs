@@ -7,7 +7,7 @@ namespace LORE.Entities.Items
     {
         public ArmorBase(
             string name, Money money, 
-            ArmorTypes type, int armorValue, int staminaBoost, int strengthBoost, int agilityBoost, int intelligenceBoost, int wisdomBoost
+            ArmorType type, int armorValue, int staminaBoost, int strengthBoost, int agilityBoost, int intelligenceBoost, int wisdomBoost
         ) : base(name, money)
         {
             Type = type;
@@ -19,7 +19,7 @@ namespace LORE.Entities.Items
             WisdomBoost = wisdomBoost;
         }
 
-        public ArmorTypes Type { get; set; }
+        public ArmorType Type { get; set; }
         public int ArmorValue { get; set; }
         public int StaminaBoost { get; set; }
         public int StrengthBoost { get; set; }

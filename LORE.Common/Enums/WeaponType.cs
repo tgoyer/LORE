@@ -1,12 +1,24 @@
 ﻿namespace LORE.Common.Enums
 {
-    class WeaponType
+    public enum WeaponType
     {
-        public enum WeaponTypes 
-        {
-            Main,
-            Secondary,
-            Ranged
-        }
+        Main,
+        TwoHand,
+        Secondary,
+        Ranged
+    }
+
+    public enum WeaponCategoryType
+    {
+        GreatSword,
+        Swords,
+        Axes,
+        Daggers,
+        Staves,
+
+        ShortBow,
+        LongBow,
+        CompoundBow,
+        CrossBow
     }
 } 

@@ -10,7 +10,7 @@
         LanguageCommon,
         LanguageDwarf,
         LanguageElf,
-        LanguageGoblin,
+        LanguageHalfling,
         LanguageOrc,
         Leadership,
         Melee,

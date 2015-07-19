@@ -30,7 +30,7 @@
         /// <summary>
         /// Warrior / Mage
         /// </summary>
-        Templar,
+        Ranger,
 
         /// <summary>
         /// Pure Priest
