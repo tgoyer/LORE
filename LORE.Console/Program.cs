@@ -33,13 +33,14 @@ namespace LORE.Console
             #endregion Create Player
 
             #region Roll Player Stats
-            var roller = new DiceRoller();
-            player.Abilities.Add(new Ability(AbilityType.Strength, roller.D6(3)));
-            player.Abilities.Add(new Ability(AbilityType.Constitution, roller.D6(3)));
-            player.Abilities.Add(new Ability(AbilityType.Dexterity, roller.D6(3)));
-            player.Abilities.Add(new Ability(AbilityType.Intelligence, roller.D6(3)));
-            player.Abilities.Add(new Ability(AbilityType.Wisdom, roller.D6(3)));
-            player.Abilities.Add(new Ability(AbilityType.Charisma, roller.D6(3)));
+            player.AddAbility(AbilityType.Charisma);
+            player.AddAbility(AbilityType.Constitution);
+            player.AddAbility(AbilityType.Dexterity);
+            player.AddAbility(AbilityType.Intelligence);
+            player.AddAbility(AbilityType.Strength);
+            player.AddAbility(AbilityType.Wisdom);
+            
+            player.AssignRace(RaceType.Human);
             #endregion Roll Player Stats
 
             #region Player Starter Cash

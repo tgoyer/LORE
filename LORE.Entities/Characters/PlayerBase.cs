@@ -7,9 +7,6 @@ namespace LORE.Entities.Characters
     {
         public PlayerBase(string name) : base(name)
         {
-            Abilities = new List<Ability>();
         }
-
-        public List<Ability> Abilities { get; private set; }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using LORE.Entities.Characters;
 using LORE.Entities.Mechanics.Rules;
 
 namespace LORE.MiddeTier.Rules
@@ -84,6 +87,29 @@ namespace LORE.MiddeTier.Rules
                     break;
             }
             return rule;
+        }
+    }
+
+    public static class AbilityScoreRulesExtensions
+    {
+        public static void AddAbility(this CharacterBase character, AbilityType type)
+        {
+            var ability = character.GetAbility(type);
+            if (ability != null) throw new Exception("Ability is already set.");
+
+            var roller = new DiceRoller();
+            character.Abilities.Add(new Ability(type, roller.D6(3)));
+        }
+
+        public static Ability GetAbility(this CharacterBase character, AbilityType type)
+        {
+            return character.Abilities.FirstOrDefault(a => a.Type == type);
+        }
+
+        public static AbilityScore GetAbilityScore(this CharacterBase character, AbilityType type)
+        {
+            var rules = new AbilityScoreRules();
+            return rules.GetRuleByStatValue(character.GetAbility(type).Value);
         }
     }
 }
