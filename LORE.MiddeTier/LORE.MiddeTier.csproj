@@ -47,10 +47,6 @@
     <Compile Include="Rules\SkillRules.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LORE.Common\LORE.Common.csproj">
-      <Project>{518DB6C7-3EEB-4832-A0EE-14C64FD5A36C}</Project>
-      <Name>LORE.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LORE.Entities\LORE.Entities.csproj">
       <Project>{9f98d11d-d9e1-4627-92b7-7973982f9698}</Project>
       <Name>LORE.Entities</Name>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using LORE.Common.Enums;
 using LORE.Entities.Items;
+using LORE.Entities.Mechanics.Inventory;
 using LORE.Entities.Mechanics.Rules;
 using LORE.Entities.Misc;
 
@@ -13,16 +13,16 @@ namespace LORE.Entities.Characters
             Abilities = new List<Ability>();
             Money = new Money();
             Inventory = new List<ItemBase>();
-            ArmorProficiencies = new List<ArmorCategoryType>();
-            WeaponProficiencies = new List<WeaponCategoryType>();
+            Proficiencies = new List<EquipmentCategory>();
+            Equipment = new Equipment();
         }
 
         public CharacterBase(string name) : this() {
             Name = name;
         }
 
-        public List<ArmorCategoryType> ArmorProficiencies { get; private set; }
-        public List<WeaponCategoryType> WeaponProficiencies { get; private set; }
+        public Equipment Equipment { get; private set; }
+        public List<EquipmentCategory> Proficiencies { get; private set; }
         public List<Ability> Abilities { get; private set; }
         public List<Skill> Skills { get; private set; }
         public string Name { get; set; }

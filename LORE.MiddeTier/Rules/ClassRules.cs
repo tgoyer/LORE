@@ -1,5 +1,5 @@
-﻿using LORE.Common.Enums;
-using LORE.Entities.Characters;
+﻿using LORE.Entities.Characters;
+using LORE.Entities.Items;
 using LORE.Entities.Mechanics.Rules;
 
 namespace LORE.MiddeTier.Rules
@@ -49,13 +49,13 @@ namespace LORE.MiddeTier.Rules
             character.ModifyAbilityBy(AbilityType.Charisma, 1);
             character.ModifyAbilityBy(AbilityType.Dexterity, 1);
 
-            AddArmorProficiency(character, ArmorCategoryType.LightArmor);
-            AddArmorProficiency(character, ArmorCategoryType.MediumArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.LightArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.MediumArmor);
 
-            AddWeaponProficiency(character, WeaponCategoryType.Daggers);
-            AddWeaponProficiency(character, WeaponCategoryType.Swords);
-            AddWeaponProficiency(character, WeaponCategoryType.ShortBow);
-            AddWeaponProficiency(character, WeaponCategoryType.CrossBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Daggers);
+            AddEquipmentProficiency(character, EquipmentCategory.Swords);
+            AddEquipmentProficiency(character, EquipmentCategory.ShortBow);
+            AddEquipmentProficiency(character, EquipmentCategory.CrossBow);
 
             AddSkill(character, SkillType.Casting, 10);
             AddSkill(character, SkillType.Concentration, 10);
@@ -68,14 +68,14 @@ namespace LORE.MiddeTier.Rules
         {
             character.ModifyAbilityBy(AbilityType.Strength, 2);
 
-            AddArmorProficiency(character, ArmorCategoryType.LightArmor);
-            AddArmorProficiency(character, ArmorCategoryType.MediumArmor);
-            AddArmorProficiency(character, ArmorCategoryType.HeavyArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.LightArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.MediumArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.HeavyArmor);
 
-            AddWeaponProficiency(character, WeaponCategoryType.Axes);
-            AddWeaponProficiency(character, WeaponCategoryType.Daggers);
-            AddWeaponProficiency(character, WeaponCategoryType.ShortBow);
-            AddWeaponProficiency(character, WeaponCategoryType.Swords);
+            AddEquipmentProficiency(character, EquipmentCategory.Axes);
+            AddEquipmentProficiency(character, EquipmentCategory.Daggers);
+            AddEquipmentProficiency(character, EquipmentCategory.ShortBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Swords);
 
             AddSkill(character, SkillType.DualWield, 5);
             AddSkill(character, SkillType.Fortitude, 15);
@@ -89,15 +89,15 @@ namespace LORE.MiddeTier.Rules
             character.ModifyAbilityBy(AbilityType.Strength, 1);
             character.ModifyAbilityBy(AbilityType.Constitution, 1);
 
-            AddArmorProficiency(character, ArmorCategoryType.LightArmor);
-            AddArmorProficiency(character, ArmorCategoryType.MediumArmor);
-            AddArmorProficiency(character, ArmorCategoryType.HeavyArmor);
-            AddArmorProficiency(character, ArmorCategoryType.Shields);
+            AddEquipmentProficiency(character, EquipmentCategory.LightArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.MediumArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.HeavyArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.Shields);
 
-            AddWeaponProficiency(character, WeaponCategoryType.Daggers);
-            AddWeaponProficiency(character, WeaponCategoryType.GreatSword);
-            AddWeaponProficiency(character, WeaponCategoryType.ShortBow);
-            AddWeaponProficiency(character, WeaponCategoryType.Swords);
+            AddEquipmentProficiency(character, EquipmentCategory.Daggers);
+            AddEquipmentProficiency(character, EquipmentCategory.GreatSword);
+            AddEquipmentProficiency(character, EquipmentCategory.ShortBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Swords);
 
             AddSkill(character, SkillType.Casting, 5);
             AddSkill(character, SkillType.Concentration, 5);
@@ -111,12 +111,12 @@ namespace LORE.MiddeTier.Rules
         {
             character.ModifyAbilityBy(AbilityType.Intelligence, 2);
 
-            AddArmorProficiency(character, ArmorCategoryType.LightArmor);
-            AddArmorProficiency(character, ArmorCategoryType.Icons);
+            AddEquipmentProficiency(character, EquipmentCategory.LightArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.Icons);
 
-            AddWeaponProficiency(character, WeaponCategoryType.Daggers);
-            AddWeaponProficiency(character, WeaponCategoryType.ShortBow);
-            AddWeaponProficiency(character, WeaponCategoryType.Staves);
+            AddEquipmentProficiency(character, EquipmentCategory.Daggers);
+            AddEquipmentProficiency(character, EquipmentCategory.ShortBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Staves);
 
             AddSkill(character, SkillType.Casting, 20);
             AddSkill(character, SkillType.Concentration, 15);
@@ -129,13 +129,13 @@ namespace LORE.MiddeTier.Rules
             character.ModifyAbilityBy(AbilityType.Dexterity, 1);
             character.ModifyAbilityBy(AbilityType.Strength, 1);
 
-            AddArmorProficiency(character, ArmorCategoryType.LightArmor);
-            AddArmorProficiency(character, ArmorCategoryType.MediumArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.LightArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.MediumArmor);
 
-            AddWeaponProficiency(character, WeaponCategoryType.Daggers);
-            AddWeaponProficiency(character, WeaponCategoryType.Staves);
-            AddWeaponProficiency(character, WeaponCategoryType.ShortBow);
-            AddWeaponProficiency(character, WeaponCategoryType.Swords);
+            AddEquipmentProficiency(character, EquipmentCategory.Daggers);
+            AddEquipmentProficiency(character, EquipmentCategory.Staves);
+            AddEquipmentProficiency(character, EquipmentCategory.ShortBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Swords);
 
             AddSkill(character, SkillType.Casting, 5);
             AddSkill(character, SkillType.DualWield, 10);
@@ -148,11 +148,11 @@ namespace LORE.MiddeTier.Rules
         {
             character.ModifyAbilityBy(AbilityType.Wisdom, 2);
 
-            AddArmorProficiency(character, ArmorCategoryType.LightArmor);
-            AddArmorProficiency(character, ArmorCategoryType.Icons);
+            AddEquipmentProficiency(character, EquipmentCategory.LightArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.Icons);
 
-            AddWeaponProficiency(character, WeaponCategoryType.Staves);
-            AddWeaponProficiency(character, WeaponCategoryType.ShortBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Staves);
+            AddEquipmentProficiency(character, EquipmentCategory.ShortBow);
 
             AddSkill(character, SkillType.Casting, 15);
             AddSkill(character, SkillType.Concentration, 10);
@@ -166,17 +166,17 @@ namespace LORE.MiddeTier.Rules
             character.ModifyAbilityBy(AbilityType.Dexterity, 1);
             character.ModifyAbilityBy(AbilityType.Intelligence, 1);
 
-            AddArmorProficiency(character, ArmorCategoryType.LightArmor);
-            AddArmorProficiency(character, ArmorCategoryType.MediumArmor);
-            AddArmorProficiency(character, ArmorCategoryType.Shields);
+            AddEquipmentProficiency(character, EquipmentCategory.LightArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.MediumArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.Shields);
 
-            AddWeaponProficiency(character, WeaponCategoryType.Axes);
-            AddWeaponProficiency(character, WeaponCategoryType.CompoundBow);
-            AddWeaponProficiency(character, WeaponCategoryType.CrossBow);
-            AddWeaponProficiency(character, WeaponCategoryType.Daggers);
-            AddWeaponProficiency(character, WeaponCategoryType.LongBow);
-            AddWeaponProficiency(character, WeaponCategoryType.ShortBow);
-            AddWeaponProficiency(character, WeaponCategoryType.Swords);
+            AddEquipmentProficiency(character, EquipmentCategory.Axes);
+            AddEquipmentProficiency(character, EquipmentCategory.CompoundBow);
+            AddEquipmentProficiency(character, EquipmentCategory.CrossBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Daggers);
+            AddEquipmentProficiency(character, EquipmentCategory.LongBow);
+            AddEquipmentProficiency(character, EquipmentCategory.ShortBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Swords);
 
             AddSkill(character, SkillType.Block, 5);
             AddSkill(character, SkillType.Casting, 5);
@@ -191,12 +191,12 @@ namespace LORE.MiddeTier.Rules
         {
             character.ModifyAbilityBy(AbilityType.Dexterity, 2);
 
-            AddArmorProficiency(character, ArmorCategoryType.LightArmor);
-            AddArmorProficiency(character, ArmorCategoryType.MediumArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.LightArmor);
+            AddEquipmentProficiency(character, EquipmentCategory.MediumArmor);
 
-            AddWeaponProficiency(character, WeaponCategoryType.Daggers);
-            AddWeaponProficiency(character, WeaponCategoryType.ShortBow);
-            AddWeaponProficiency(character, WeaponCategoryType.Swords);
+            AddEquipmentProficiency(character, EquipmentCategory.Daggers);
+            AddEquipmentProficiency(character, EquipmentCategory.ShortBow);
+            AddEquipmentProficiency(character, EquipmentCategory.Swords);
 
             AddSkill(character, SkillType.DualWield, 15);
             AddSkill(character, SkillType.Melee, 5);
@@ -218,18 +218,11 @@ namespace LORE.MiddeTier.Rules
             }
         }
 
-        private static void AddArmorProficiency(CharacterBase character, ArmorCategoryType type)
+        private static void AddEquipmentProficiency(CharacterBase character, EquipmentCategory type)
         {
-            if (character.ArmorProficiencies.Contains(type))
+            if (character.Proficiencies.Contains(type))
                 return;
-            character.ArmorProficiencies.Add(type);
-        }
-
-        private static void AddWeaponProficiency(CharacterBase character, WeaponCategoryType type)
-        {
-            if (character.WeaponProficiencies.Contains(type))
-                return;
-            character.WeaponProficiencies.Add(type);
+            character.Proficiencies.Add(type);
         }
     }
 }

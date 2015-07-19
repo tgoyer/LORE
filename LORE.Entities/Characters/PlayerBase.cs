@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using LORE.Entities.Mechanics.Rules;
-
-namespace LORE.Entities.Characters
+﻿namespace LORE.Entities.Characters
 {
     public class PlayerBase : CharacterBase
     {

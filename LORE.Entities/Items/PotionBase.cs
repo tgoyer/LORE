@@ -5,7 +5,8 @@ namespace LORE.Entities.Items
 {
     public abstract class PotionBase : ItemBase
     {
-        public PotionBase(string name, Money money, int value) : base(name, money) {
+        public PotionBase(string name, Money money, double weight, int value) : base(name, money, weight)
+        {
             PotionValue = value;
         }
 

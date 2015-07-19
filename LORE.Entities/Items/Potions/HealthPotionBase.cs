@@ -5,7 +5,8 @@ namespace LORE.Entities.Items.Potions
 {
     public class HealthPotionBase : PotionBase
     {
-        public HealthPotionBase(string name, Money money, int value) : base(name, money, value)
+        public HealthPotionBase(string name, Money money, double weight, int value)
+            : base(name, money, weight, value)
         {}
 
         public override void Consume(CharacterBase consumer)

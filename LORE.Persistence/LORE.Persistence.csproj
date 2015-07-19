@@ -42,10 +42,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LORE.Common\LORE.Common.csproj">
-      <Project>{518db6c7-3eeb-4832-a0ee-14c64fd5a36c}</Project>
-      <Name>LORE.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LORE.Entities\LORE.Entities.csproj">
       <Project>{9f98d11d-d9e1-4627-92b7-7973982f9698}</Project>
       <Name>LORE.Entities</Name>

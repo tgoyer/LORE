@@ -1,10 +1,8 @@
-﻿using LORE.Common.Enums;
-using LORE.Entities.Characters;
+﻿using LORE.Entities.Characters;
 using LORE.Entities.Items;
 using LORE.Entities.Items.Potions;
 using LORE.Entities.Mechanics.Rules;
 using LORE.Entities.Misc;
-using LORE.MiddeTier;
 using LORE.MiddeTier.Rules;
 
 namespace LORE.Console
@@ -19,9 +17,9 @@ namespace LORE.Console
             #region Item Creation
             //var fieryAxeOfDoom = new WeaponBase("Fiery Axe Of Doom", new Money(gold: 20), 10, 25, 2, 6);
             //var fieryAxeOfLame = new WeaponBase("Fiery Axe Of Lame", new Money(copper: 2), 1, 2, 0, 0);
-            var greaterHealthPotion = new HealthPotionBase("Greater Health Potion", new Money(silver: 20), 20);
-            var lesserHealthPotion = new HealthPotionBase("Lesser Health Potion", new Money(copper: 20), 10);
-            var iornChestplate = new ArmorBase("Iorn Chestplate", new Money(platinum: 1, gold: 1, silver: 50), ArmorType.Chest, 10, 5, 1, 8, 0, 0);
+            var greaterHealthPotion = new HealthPotionBase("Greater Health Potion", new Money(silver: 20), 0.5, 20);
+            var lesserHealthPotion = new HealthPotionBase("Lesser Health Potion", new Money(copper: 20), 0.5, 10);
+            //var iornChestplate = new ArmorBase("Iorn Chestplate", new Money(platinum: 1, gold: 1, silver: 50), EquipmentType.Chest, 10, 5, 1, 8, 0, 0);
             #endregion Item Creation
 
             #region Player Creation
@@ -44,8 +42,8 @@ namespace LORE.Console
             player.AddAbility(AbilityType.Wisdom);
 
             // Modify abilites based on race and class.  Assign skills.
-            player.AssignRace(RaceType.Halfling);
-            player.AssignClass(ClassType.Rogue);
+            player.AssignRace(RaceType.Elf);
+            player.AssignClass(ClassType.Berserker);
             #endregion Roll Player Stats
 
             #region Player Starter Cash
@@ -59,7 +57,7 @@ namespace LORE.Console
             //player.Inventory.Add(fieryAxeOfLame);
             player.Inventory.Add(greaterHealthPotion);
             player.Inventory.Add(lesserHealthPotion);
-            player.Inventory.Add(iornChestplate);
+            //player.Inventory.Add(iornChestplate);
             #endregion Populate Player Inventory
 
             #region Display Generated Values
@@ -83,6 +81,13 @@ namespace LORE.Console
             {
                 var rule = ruleSet.GetRuleByStatValue(a.Value);
                 System.Console.WriteLine("      {0}: {1} which is {2} ({3}).", a.Type.ToString(), a.Value, rule.Name, rule.Modifier);
+            }
+            System.Console.WriteLine("");
+            System.Console.WriteLine("");
+            System.Console.WriteLine(" Player's Skills are: ");
+            foreach (var s in player.Skills)
+            {
+                System.Console.WriteLine("      {0}: {1}. (Actual: {2})", s.Type.ToString(), player.GetSkillScore(s.Type), s.Value);
             }
             System.Console.WriteLine("");
             #endregion Show Player Stats

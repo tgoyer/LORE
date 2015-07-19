@@ -1,16 +1,15 @@
-﻿using LORE.Common.Enums;
+﻿using System.Collections.Generic;
 using LORE.Entities.Misc;
 
 namespace LORE.Entities.Items
 {
-    public class ArmorBase : ItemBase
+    public abstract class ArmorBase : EquipmentBase
     {
         public ArmorBase(
-            string name, Money money, 
-            ArmorType type, int armorValue, int staminaBoost, int strengthBoost, int agilityBoost, int intelligenceBoost, int wisdomBoost
-        ) : base(name, money)
+            string name, Money money, EquipmentCategory category, List<EquipmentType> type, double weight,
+            int armorValue, int staminaBoost, int strengthBoost, int agilityBoost, int intelligenceBoost, int wisdomBoost
+        ) : base(name, money, weight, category, type)
         {
-            Type = type;
             ArmorValue = armorValue;
             StaminaBoost = staminaBoost;
             StrengthBoost = strengthBoost;
@@ -19,7 +18,6 @@ namespace LORE.Entities.Items
             WisdomBoost = wisdomBoost;
         }
 
-        public ArmorType Type { get; set; }
         public int ArmorValue { get; set; }
         public int StaminaBoost { get; set; }
         public int StrengthBoost { get; set; }
