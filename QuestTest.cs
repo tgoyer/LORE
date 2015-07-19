@@ -11,21 +11,22 @@ namespace LORE.Console
 {
     class Program
     {
-    	Console.WriteLine ("You see a strange man sitting in the forest. What should you do?");
-    	
-    	Console.WriteLine("1) Yell at him.")
-		
-		Console.WriteLine("2) Try to sneak up on him (rouge class)")
+        public void RunQuest()
+        {
+            Console.WriteLine("You see a strange man sitting in the forest. What should you do?");
+            Console.WriteLine("1) Yell at him.");
+            Console.WriteLine("2) Try to sneak up on him (rouge class)");
+            Console.WriteLine("3) Walk away.");
 
-		Console.WriteLine("3) Walk away.")
+            var response = Console.ReadLine();
+            if (response == "1" || response == "2" || response == "3")
+            {
 
-		var response = Console.ReadLine();
+            }
+            else
+            {
 
-		if (response == "1" || response == "2" || response == "3") {
-
-		} else{
-
-		};
-		
+            }
+        }
     }
 }
