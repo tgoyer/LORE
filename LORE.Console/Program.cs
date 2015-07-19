@@ -15,8 +15,8 @@ namespace LORE.Console
         {
             #region Test Console App
             #region Item Creation
-            var fieryAxeOfDoom = new WeaponBase("Fiery Axe Of Doom", new Money(gold: 20), 10, 25, 2, 6);
-            var fieryAxeOfLame = new WeaponBase("Fiery Axe Of Lame", new Money(copper: 2), 1, 2, 0, 0);
+            //var fieryAxeOfDoom = new WeaponBase("Fiery Axe Of Doom", new Money(gold: 20), 10, 25, 2, 6);
+            //var fieryAxeOfLame = new WeaponBase("Fiery Axe Of Lame", new Money(copper: 2), 1, 2, 0, 0);
             var greaterHealthPotion = new HealthPotionBase("Greater Health Potion", new Money(silver: 20), 20);
             var lesserHealthPotion = new HealthPotionBase("Lesser Health Potion", new Money(copper: 20), 10);
             var iornChestplate = new ArmorBase("Iorn Chestplate", new Money(platinum: 1, gold: 1, silver: 50), ArmorTypes.Chest, 10, 5, 1, 8, 0, 0);
@@ -50,8 +50,8 @@ namespace LORE.Console
             #endregion Player Creation
 
             #region Populate Player Inventory
-            player.Inventory.Add(fieryAxeOfDoom);
-            player.Inventory.Add(fieryAxeOfLame);
+            //player.Inventory.Add(fieryAxeOfDoom);
+            //player.Inventory.Add(fieryAxeOfLame);
             player.Inventory.Add(greaterHealthPotion);
             player.Inventory.Add(lesserHealthPotion);
             player.Inventory.Add(iornChestplate);
@@ -99,7 +99,7 @@ namespace LORE.Console
                 if (item is WeaponBase)
                 {
                     var w = (item as WeaponBase);
-                    System.Console.WriteLine("    *** This is a weapon! {0} max damage.", w.MaximumDamage);
+                    System.Console.WriteLine("    *** This is a weapon! {0} base damage.", w.BaseDamage);
                 }
                 if (item is ArmorBase)
                 {

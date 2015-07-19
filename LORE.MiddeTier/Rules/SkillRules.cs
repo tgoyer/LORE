@@ -7,7 +7,7 @@ namespace LORE.MiddeTier.Rules
 {
     public static class SkillRulesExtensions
     {
-        public static Skill AddSkill(this CharacterBase character, SkillType type)
+        public static void AddSkill(this CharacterBase character, SkillType type)
         {
             var skill = character.GetSkill(type);
             if (skill != null) throw new Exception("Skill is already set.");
@@ -15,7 +15,7 @@ namespace LORE.MiddeTier.Rules
             character.Skills.Add(new Skill(type, GetAbilityModifier(type), 0));
         }
 
-        public static Skill AddSkill(this CharacterBase character, SkillType type, int value)
+        public static void AddSkill(this CharacterBase character, SkillType type, int value)
         {
             character.AddSkill(type);
             character.SetSkillValue(type, value);
@@ -70,8 +70,6 @@ namespace LORE.MiddeTier.Rules
                     return AbilityType.Intelligence;
                 case SkillType.LanguageOrc:
                     return AbilityType.Intelligence;
-                case SkillType.LanguageTroll:
-                    return AbilityType.Intelligence;
                 case SkillType.Leadership:
                     return AbilityType.Charisma;
                 case SkillType.Melee:
@@ -89,6 +87,7 @@ namespace LORE.MiddeTier.Rules
                 case SkillType.Thievery:
                     return AbilityType.Dexterity;
             }
+            throw new Exception("AbilityType not found.");
         }
     }
 }

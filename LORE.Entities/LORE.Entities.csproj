@@ -54,6 +54,10 @@
     <Compile Include="Items\PotionBase.cs" />
     <Compile Include="Items\Potions\HealthPotionBase.cs" />
     <Compile Include="Items\WeaponBase.cs" />
+    <Compile Include="Mechanics\Rules\AttackResult.cs" />
+    <Compile Include="Mechanics\Rules\Class.cs" />
+    <Compile Include="Mechanics\Rules\Race.cs" />
+    <Compile Include="Mechanics\Rules\Skill.cs" />
     <Compile Include="Misc\Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mechanics\Rules\Ability.cs" />
