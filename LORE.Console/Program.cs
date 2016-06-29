@@ -215,22 +215,34 @@ namespace LORE.Console
             while (true)
             {
                 System.Console.Clear();
-                System.Console.WriteLine("Command List:     1) Give_Money");
-                string amountAdd = "";
+                System.Console.WriteLine("Command List:     1) GiveMoney   2) HealMe");
                 string comand = "null";
-                while (comand != "Give_Money") 
+                while (comand != "GiveMoney" || comand != "HealMe") 
                 {
                     comand = System.Console.ReadLine();
                     
-                    if (comand == "Give_Money")
+                    if (comand == "GiveMoney")
                     {
+                        string amountAdd = "";
                         System.Console.WriteLine("You have {0} Plat, {1} Gold, {2} Silver, and {3} Copper.", player.Money.Platinum, player.Money.Gold, player.Money.Silver, player.Money.Copper);
                         System.Console.WriteLine("How Much?");
                         amountAdd = System.Console.ReadLine();
                         int amountAddint = System.Convert.ToInt32(amountAdd);
-                        player.Money.AddMoney(copper : amountAddint);
+                        player.Money.AddMoney(copper: amountAddint);
                         System.Console.WriteLine("You have {0} Plat, {1} Gold, {2} Silver, and {3} Copper now!", player.Money.Platinum, player.Money.Gold, player.Money.Silver, player.Money.Copper);
                         System.Console.ReadLine();
+                    };
+
+                    if (comand == "HealMe")
+                    {
+                        string amountHeal = "";
+                        System.Console.WriteLine("You have {0}/{1} HP.", player.CurrentHealth, player.MaximumHealth);
+                        System.Console.ReadLine();
+                        System.Console.WriteLine("Heal for?");
+                        amountHeal = System.Console.ReadLine();
+                        int amountHealint = System.Convert.ToInt32(amountHeal);
+                        var hackHP = new HealthPotionBase("Greater Health Potion", new Money(copper: 0),0 , amountHealint);
+
                     };
                 };
             };

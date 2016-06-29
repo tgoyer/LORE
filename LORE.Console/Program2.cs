@@ -13,11 +13,9 @@ namespace LORE.Console
     {
         static void Main(string[] args)
         {
-            no:
 
             System.Console.WriteLine("He disapears into the forest.");
             
-            start:
             System.Console.WriteLine("You see a man walking in circles in the forest. He looks scared. What should you do?");
             System.Console.WriteLine("1) Go up to him.");
             System.Console.WriteLine("2) Try to sneak up on him (rouge class)");
@@ -43,14 +41,12 @@ namespace LORE.Console
                         if (response == "2")
                         {
                             System.Console.Clear();
-                            goto no;
                         }
                     }
                 }
             else
             {
                 System.Console.Clear();
-                goto start;
             }
         }
    } 
