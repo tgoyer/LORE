@@ -210,9 +210,12 @@ namespace LORE.Console
             #endregion Show Player Inventory
             #endregion Display Generated Values
 
+            System.Console.WriteLine("Press Enter");
+            System.Console.ReadLine();
             while (true)
             {
-                int amountAddint;
+                System.Console.Clear();
+                System.Console.WriteLine("Command List:     1) Give_Money");
                 string amountAdd = "";
                 string comand = "null";
                 while (comand != "Give_Money") 
@@ -221,10 +224,13 @@ namespace LORE.Console
                     
                     if (comand == "Give_Money")
                     {
+                        System.Console.WriteLine("You have {0} Plat, {1} Gold, {2} Silver, and {3} Copper.", player.Money.Platinum, player.Money.Gold, player.Money.Silver, player.Money.Copper);
                         System.Console.WriteLine("How Much?");
                         amountAdd = System.Console.ReadLine();
-                        amountAddint = System.Convert.ToInt32(amountAdd);
-                        player.Money = (player.Money + amountAddint);
+                        int amountAddint = System.Convert.ToInt32(amountAdd);
+                        player.Money.AddMoney(copper : amountAddint);
+                        System.Console.WriteLine("You have {0} Plat, {1} Gold, {2} Silver, and {3} Copper now!", player.Money.Platinum, player.Money.Gold, player.Money.Silver, player.Money.Copper);
+                        System.Console.ReadLine();
                     };
                 };
             };
