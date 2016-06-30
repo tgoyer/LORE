@@ -29,6 +29,8 @@ namespace LORE.Entities.Characters
         public int CurrentHealth { get; set; }
         public int MaximumHealth { get; set; }
         public int Level { get; set; }
+        public int XpNeeded { get; set; }
+        public int CurrentXp { get; set; }
         public ClassType Class { get; set; }
         public RaceType Race { get; set; }
         public List<ItemBase> Inventory { get; set; }

@@ -15,16 +15,18 @@ namespace LORE.Entities.Misc
 
         public static int ConvertToCopper(int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
         {
-            int val = (platinum * 1000);
-            val += (gold * 100);
-            val += (silver * 10);
+            int val = (platinum * 100000);
+            val += (gold * 10000);
+            val += (silver * 100);
             val += copper;
             return val;
         }
 
         public void AddMoney(int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
         {
+            {
             _copper += ConvertToCopper(platinum, gold, silver, copper);
+            }
         }
 
         public void SubtractMoney(int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
@@ -49,11 +51,12 @@ namespace LORE.Entities.Misc
             }
         }
 
+            
         public int Platinum
         {
             get
             {
-                return Convert.ToInt32(_copper / 1000);
+                return Convert.ToInt32(_copper / 1000000);
             }
         }
 
@@ -61,7 +64,7 @@ namespace LORE.Entities.Misc
         {
             get
             {
-                return Convert.ToInt32((_copper / 100) % 10);
+                return Convert.ToInt32((_copper / 10000) % 100);
             }
         }
 
@@ -69,7 +72,7 @@ namespace LORE.Entities.Misc
         {
             get
             {
-                return Convert.ToInt32((_copper / 10) % 10);
+                return Convert.ToInt32((_copper / 100) % 100);
             }
         }
 
@@ -77,7 +80,7 @@ namespace LORE.Entities.Misc
         {
             get
             {
-                return (_copper % 10);
+                return (_copper % 100);
             }
         }
 
