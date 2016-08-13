@@ -9,7 +9,7 @@ using LORE.MiddeTier.Rules;
 
 namespace LORE.Console
 {
-    class Program
+    class Quest
     {
         public void RunQuest()
         {

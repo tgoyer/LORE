@@ -35,5 +35,6 @@ namespace LORE.Entities.Characters
         public RaceType Race { get; set; }
         public List<ItemBase> Inventory { get; set; }
         public Money Money { get; set; }
+
     }
 }

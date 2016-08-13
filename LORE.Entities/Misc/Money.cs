@@ -4,32 +4,42 @@ namespace LORE.Entities.Misc
 {
     public class Money
     {
-        int _copper;
+        uint _copper;
         public Money() : this(0) { }
-        public Money(int value = 0) 
+        public Money(uint value = 0) 
         {
             _copper = value;
         }
-        public Money(int platinum = 0, int gold = 0, int silver = 0, int copper = 0) : this(ConvertToCopper(platinum, gold, silver, copper))
+        public Money(uint platinum = 0, uint gold = 0, uint silver = 0, uint copper = 0) : this(ConvertToCopper(platinum, gold, silver, copper))
         {}
 
-        public static int ConvertToCopper(int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
+        public static uint ConvertToCopper(uint platinum = 0, uint gold = 0, uint silver = 0, uint copper = 0)
         {
-            int val = (platinum * 100000);
+            uint val = (platinum * 1000000);
             val += (gold * 10000);
             val += (silver * 100);
             val += copper;
             return val;
         }
 
-        public void AddMoney(int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
+        public void AddMoney(uint platinum = 0, uint gold = 0, uint silver = 0, uint copper = 0)
         {
             {
-            _copper += ConvertToCopper(platinum, gold, silver, copper);
+                if (_copper == 4294967295 || _copper > 4294967295)
+                {
+                    _copper = 4294967295;
+                    System.Console.WriteLine("you are at max money.");
+                    System.Console.ReadLine();
+                }
+                else
+                {
+                    _copper += ConvertToCopper(platinum, gold, silver, copper);
+                }
+                
             }
         }
 
-        public void SubtractMoney(int platinum = 0, int gold = 0, int silver = 0, int copper = 0)
+        public void SubtractMoney(uint platinum = 0, uint gold = 0, uint silver = 0, uint copper = 0)
         {
             var val = ConvertToCopper(platinum, gold, silver, copper);
 
@@ -47,36 +57,36 @@ namespace LORE.Entities.Misc
         {
             get
             {
-                return _copper;
+                return Convert.ToInt32(_copper);
             }
         }
 
             
-        public int Platinum
+        public uint Platinum
         {
             get
             {
-                return Convert.ToInt32(_copper / 1000000);
+                return Convert.ToUInt32(_copper / 1000000);
             }
         }
 
-        public int Gold
+        public uint Gold
         {
             get
             {
-                return Convert.ToInt32((_copper / 10000) % 100);
+                return Convert.ToUInt32((_copper / 10000) % 100);
             }
         }
 
-        public int Silver
+        public uint Silver
         {
             get
             {
-                return Convert.ToInt32((_copper / 100) % 100);
+                return Convert.ToUInt32((_copper / 100) % 100);
             }
         }
 
-        public int Copper
+        public uint Copper
         {
             get
             {

@@ -57,12 +57,14 @@
     <Compile Include="Items\Potions\HealthPotionBase.cs" />
     <Compile Include="Items\WeaponBase.cs" />
     <Compile Include="Items\WeaponType\OneHanded.cs" />
+    <Compile Include="Mechanics\Comands\Comands.cs" />
     <Compile Include="Mechanics\Inventory\BagBase.cs" />
     <Compile Include="Mechanics\Inventory\Equipment.cs" />
     <Compile Include="Mechanics\Rules\AttackResult.cs" />
     <Compile Include="Mechanics\Rules\Class.cs" />
     <Compile Include="Mechanics\Rules\Race.cs" />
     <Compile Include="Mechanics\Rules\Skill.cs" />
+    <Compile Include="Mechanics\Start\Start.cs" />
     <Compile Include="Misc\Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mechanics\Rules\Ability.cs" />
@@ -71,6 +73,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LORE.WebApi.Services\LORE.WebApi.Services.csproj">
+      <Project>{b770bb00-f70f-41e9-8e79-5fc1fdaa90d0}</Project>
+      <Name>LORE.WebApi.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

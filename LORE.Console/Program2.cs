@@ -9,9 +9,9 @@ using LORE.Console;
 
 namespace LORE.Console
 {
-    class Program
+    class Program2
     {
-        static void Main(string[] args)
+        public void Quest()
         {
 
             System.Console.WriteLine("He disapears into the forest.");

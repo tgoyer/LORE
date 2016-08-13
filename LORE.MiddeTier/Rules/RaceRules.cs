@@ -39,7 +39,7 @@ namespace LORE.MiddeTier.Rules
             character.ModifyAbilityBy(AbilityType.Dexterity, -2);
             character.ModifyAbilityBy(AbilityType.Strength, 1);
             character.ModifyAbilityBy(AbilityType.Wisdom, 1);
-
+            
             character.AddSkill(SkillType.LanguageDwarf, 100);
             character.AddSkill(SkillType.LanguageCommon, 25);
             character.AddSkill(SkillType.Block, 5);

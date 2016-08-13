@@ -1,4 +1,8 @@
-﻿namespace LORE.Entities.Mechanics.Rules
+﻿using LORE.Entities.Mechanics.Rules;
+using LORE.Entities.Characters;
+
+
+namespace LORE.Entities.Mechanics.Rules
 {
     public class AttackResult
     {
@@ -13,6 +17,7 @@
 
         public static AttackResult GetResult()
         {
+              
             // TODO:  Figure out AttackResult process.
             return new AttackResult(false, 0);
         }
