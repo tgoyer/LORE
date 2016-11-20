@@ -12,7 +12,7 @@ namespace LORE.Entities.Items
         }
         
         public string Name { get; set; }
-        public int Value { get; set; }
+        public uint Value { get; set; }
         public double Weight { get; set; }
     }
 }

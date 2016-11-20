@@ -1,14 +1,11 @@
-﻿using System.Globalization;
-using LORE.Entities.Characters;
-using LORE.Entities.Items;
+﻿using LORE.Entities.Characters;
 using LORE.Entities.Items.Potions;
 using LORE.Entities.Mechanics.Rules;
 using LORE.Entities.Misc;
 using LORE.MiddeTier.Rules;
-using LORE.Entities.Mechanics;
 using LORE.Entities.Mechanics.Start;
-using LORE.Console;
-
+using LORE.Entities.Mechanics;
+using System;
 
 
 namespace LORE.Console
@@ -17,16 +14,6 @@ namespace LORE.Console
     {
         static void Main(string[] args)
         {
-            TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
-            #region Test Console App
-            var ruleSet = new AbilityScoreRules();
-
-            #region Item Creation
-            var greaterHealthPotion = new HealthPotionBase("Greater Health Potion", new Money(silver: 20), 0.5, 20);
-            var lesserHealthPotion = new HealthPotionBase("Lesser Health Potion", new Money(copper: 20), 0.5, 10);
-            //var iornChestplate = new ArmorBase("Iorn Chestplate", new Money(platinum: 1, gold: 1, silver: 50), EquipmentType.Chest, 10, 5, 1, 8, 0, 0, 0, 0);
-            #endregion Item Creation
-            #region Player Creation
             var player = new PlayerBase(null)
             {
                 CurrentHealth = 10,
@@ -37,8 +24,17 @@ namespace LORE.Console
                 XpNeeded = 100
 
             };
-            Start.AskName(player);
-            System.Console.Clear();
+            Start.CreatePlayer(player);
+            #region Test Console App
+            var ruleSet = new AbilityScoreRules();
+
+            #region Item Creation
+            var greaterHealthPotion = new HealthPotionBase("Greater Health Potion", new Money(silver: 20), 0.5, 20);
+            var lesserHealthPotion = new HealthPotionBase("Lesser Health Potion", new Money(copper: 20), 0.5, 10);
+            //var iornChestplate = new ArmorBase("Iorn Chestplate", new Money(platinum: 1, gold: 1, silver: 50), EquipmentType.Chest, 10, 5, 1, 8, 0, 0, 0, 0);
+            #endregion Item Creation
+            #region Player Creation
+
 
             #region Roll Player Stats
             // Setup all abilites.  Assign base of 10 to each.
@@ -53,45 +49,51 @@ namespace LORE.Console
             bool raceSelected = false;
             while (raceSelected == false)
             {
+                
                 System.Console.WriteLine("Select your race.");
                 System.Console.WriteLine("");
-                System.Console.WriteLine("Dwarf");
+                System.Console.WriteLine("A: Dwarf");
                 System.Console.WriteLine("");
-                System.Console.WriteLine("Elf");
+                System.Console.WriteLine("B: Elf");
                 System.Console.WriteLine("");
-                System.Console.WriteLine("Halfling");
+                System.Console.WriteLine("C: Halfling");
                 System.Console.WriteLine("");
-                System.Console.WriteLine("Human");
+                System.Console.WriteLine("D: Human");
                 System.Console.WriteLine("");
-                var selectedRace = System.Console.ReadLine();
-                selectedRace = myTI.ToTitleCase(selectedRace);
+                System.Console.WriteLine("E: Orc");
+                System.Console.WriteLine("");
+                ConsoleKeyInfo info = System.Console.ReadKey();
+                if (info.Key == ConsoleKey.A)
                 {
-                    switch (selectedRace)
-                    {
-                        case "Elf":
-                            player.AssignRace(RaceType.Elf);
-                            raceSelected = true;
-                            break;
-                        case "Dwarf":
-                            player.AssignRace(RaceType.Dwarf);
-                            raceSelected = true;
-                            break;
-                        case "Halfling":
-                            player.AssignRace(RaceType.Halfling);
-                            raceSelected = true;
-                            break;
-                        case "Human":
-                            player.AssignRace(RaceType.Human);
-                            raceSelected = true;
-                            break;
-                        case "Orc":
-                            player.AssignRace(RaceType.Orc);
-                            raceSelected = true;
-                            break;
-                        default:
-                            break;
-                    }
-                };
+                    player.AssignRace(RaceType.Dwarf);
+                    raceSelected = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.B)
+                {
+                    player.AssignRace(RaceType.Elf);
+                    raceSelected = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.C)
+                {
+                    player.AssignRace(RaceType.Halfling);
+                    raceSelected = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.D)
+                {
+                    player.AssignRace(RaceType.Human);
+                    raceSelected = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.E)
+                {
+                    player.AssignRace(RaceType.Orc);
+                    raceSelected = true;
+                    break;
+                }
+
                 System.Console.Clear();
             };
             System.Console.Clear();
@@ -101,64 +103,75 @@ namespace LORE.Console
             {
                 System.Console.WriteLine("Choose a Class");
                 System.Console.WriteLine(" ");
-                System.Console.WriteLine("Bard");
+                System.Console.WriteLine("A: Bard");
                 System.Console.WriteLine(" ");
-                System.Console.WriteLine("Berserker");
-                System.Console.WriteLine(" ");
-                System.Console.WriteLine("Crusader");
-                System.Console.WriteLine(" ");
-                System.Console.WriteLine("Elementalist");
-                System.Console.WriteLine(" ");
-                System.Console.WriteLine("Monk");
-                System.Console.WriteLine(" ");
-                System.Console.WriteLine("Priest");
-                System.Console.WriteLine(" ");
-                System.Console.WriteLine("Ranger");
-                System.Console.WriteLine(" ");
-                System.Console.WriteLine("Rogue");
+                System.Console.WriteLine("B: Berserker");
                 System.Console.WriteLine("");
-
-                var chosenClass = System.Console.ReadLine();
-                chosenClass = myTI.ToTitleCase(chosenClass);
-                switch (chosenClass)
+                System.Console.WriteLine("C: Crusader");
+                System.Console.WriteLine("");
+                System.Console.WriteLine("D: Elementalist");
+                System.Console.WriteLine("");
+                System.Console.WriteLine("E: Monk");
+                System.Console.WriteLine(" ");
+                System.Console.WriteLine("F: Priest");
+                System.Console.WriteLine(" ");
+                System.Console.WriteLine("G: Ranger");
+                System.Console.WriteLine(" ");
+                System.Console.WriteLine("H: Rogue");
+                System.Console.WriteLine("");
+                ConsoleKeyInfo info = System.Console.ReadKey();
+                if (info.Key == ConsoleKey.A)
                 {
-                    case "Bard":
-                        player.AssignClass(ClassType.Bard);
-                        classChoosen = true;
-                        break;
-                    case "Berserker":
-                        player.AssignClass(ClassType.Berserker);
-                        classChoosen = true;
-                        break;
-                    case "Crusader":
-                        player.AssignClass(ClassType.Crusader);
-                        classChoosen = true;
-                        break;
-                    case "Elementalist":
-                        player.AssignClass(ClassType.Elementalist);
-                        classChoosen = true;
-                        break;
-                    case "Monk":
-                        player.AssignClass(ClassType.Monk);
-                        classChoosen = true;
-                        break;
-                    case "Priest":
-                        player.AssignClass(ClassType.Priest);
-                        classChoosen = true;
-                        break;
-                    case "Ranger":
-                        player.AssignClass(ClassType.Ranger);
-                        classChoosen = true;
-                        break;
-                    case "Rogue":
-                        player.AssignClass(ClassType.Rogue);
-                        classChoosen = true;
-                        break;
-                    default:
-                        break;
+                    player.AssignClass(ClassType.Bard);
+                    classChoosen = true;
+                    break;
                 }
+                if (info.Key == ConsoleKey.B)
+                {
+                    player.AssignClass(ClassType.Berserker);
+                    classChoosen = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.C)
+                {
+                    player.AssignClass(ClassType.Crusader);
+                    classChoosen = true;
+                    break;
+                }
+                 if (info.Key == ConsoleKey.D)
+                {
+                    player.AssignClass(ClassType.Elementalist);
+                    classChoosen = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.E)
+                {
+                    player.AssignClass(ClassType.Monk);
+                    classChoosen = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.F)
+                {
+                    player.AssignClass(ClassType.Priest);
+                    classChoosen = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.G)
+                {
+                    player.AssignClass(ClassType.Ranger);
+                    classChoosen = true;
+                    break;
+                }
+                if (info.Key == ConsoleKey.H)
+                {
+                    player.AssignClass(ClassType.Rogue);
+                    classChoosen = true;
+                    break;
+                }
+               
                  System.Console.Clear();
             };
+            System.Console.Clear();
             #endregion Roll Player Stats
 
             #region Player Starter Cash
@@ -206,9 +219,6 @@ namespace LORE.Console
             #endregion Show Player Stats
 
             #region Show Player Cash
-            System.Console.WriteLine(
-                "{4} has {0} plat, {1} gold, {2} silver, {3} copper.", player.Money.Platinum, player.Money.Gold, player.Money.Silver, player.Money.Copper, player.Name
-            );
             System.Console.WriteLine("Inventory:");
             #endregion Show Player Cash
 
@@ -224,26 +234,29 @@ namespace LORE.Console
             while (true)
             {
                 System.Console.Clear();
+                System.Console.WriteLine("Character: {0}", player.Name);
+                System.Console.WriteLine("");
                 System.Console.WriteLine("-------------Command List--------------");
                 System.Console.WriteLine(" ");
-                System.Console.WriteLine("Heal Me -- WIP");
+                System.Console.WriteLine("(H)eal Me");
                 System.Console.WriteLine(" ");
-                System.Console.WriteLine("Give Money");
+                System.Console.WriteLine("(G)ive Money");
                 System.Console.WriteLine(" ");
-                System.Console.WriteLine("Quit");
+                System.Console.WriteLine("(Q)uit");
                 System.Console.WriteLine(" ");
 
-                var response = myTI.ToTitleCase(System.Console.ReadLine());
-                switch (response)
+                ConsoleKeyInfo info = System.Console.ReadKey();
+                if (info.Key == ConsoleKey.G)
                 {
-                    case "Give Money":
-                        Comands.GiveMoney(player);
-                        break;
-                    case "Quit":
-                        System.Environment.Exit(0);
-                        break;
-                    default:
-                        break;
+                    Comands.GiveMoney(player);
+                }
+                if (info.Key == ConsoleKey.H)
+                {
+                    Comands.HealMe(player);
+                }
+                if (info.Key == ConsoleKey.Q)
+                {
+                    Environment.Exit(0);
                 }
             };
             #endregion
@@ -255,3 +268,11 @@ namespace LORE.Console
 
 
 /* have dad explain polymorphism and inheritace to me **/
+/* 
+
+if (info.Key == ConsoleKey.)
+{
+
+}
+
+**/

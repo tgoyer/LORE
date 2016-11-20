@@ -4,6 +4,8 @@
     {
         public PlayerBase(string name) : base(name)
         {
+
         }
     }
 }
+

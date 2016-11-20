@@ -9,7 +9,7 @@ using LORE.Entities.Characters;
 using LORE.Entities.Items;
 using LORE.Entities.Mechanics;
 using LORE.Entities.Misc;
-
+using LORE.Entities.Items.Potions;
 
 namespace LORE.Entities.Mechanics
 {
@@ -17,18 +17,34 @@ namespace LORE.Entities.Mechanics
     {
         public static TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
         
-        public static void GiveMoney(PlayerBase player)
+        public static void GiveMoney(PlayerBase player/**, Money money*/)
         {
+            /**uint copper = 0;
+
+            copper += Money.ConvertToCopper(platinum: 15);
+
+            copper += Money.ConvertToCopper(gold: 20);
+
+            copper += Money.ConvertToCopper(silver: 5);
+
+            copper += 34;
+            */
             bool doneMoney = false;
             while (doneMoney == false)
             {
                 Console.Clear();
-                Console.WriteLine("Plat, Gold, Silver or Copper?");
+                Console.WriteLine("A: Plat");
                 Console.WriteLine("");
-                var whichMoneyAdd = myTI.ToTitleCase(Console.ReadLine());
-                if (whichMoneyAdd == "Plat")
+                Console.WriteLine("B: Gold");
+                Console.WriteLine("");
+                Console.WriteLine("C: Silver");
+                Console.WriteLine("");
+                Console.WriteLine("D: Copper");
+                Console.WriteLine("");
+                ConsoleKeyInfo whichMoneyAdd = Console.ReadKey();
+                Console.Clear();
+                if (whichMoneyAdd.Key == ConsoleKey.A)
                 {
-                    Console.WriteLine("");
                     Console.WriteLine("How much?");
                     Console.WriteLine("");
                     int number;
@@ -39,24 +55,102 @@ namespace LORE.Entities.Mechanics
                         {
                             uint uNumberMoney = Convert.ToUInt32(number);
                             player.Money.AddMoney(platinum: uNumberMoney);
-                            Console.WriteLine("");
-                            Console.WriteLine("You now have {0} Platinum, {1} Gold, {2} Silver and {3} Copper!", player.Money.Platinum, player.Money.Gold, player.Money.Silver, player.Money.Copper);
-                            Console.ReadLine();
                             doneMoney = true;
                         }
+                        Console.Clear();
                     }
+
                 }
+                if (whichMoneyAdd.Key == ConsoleKey.B)
+                {
+                    Console.WriteLine("How much?");
+                    Console.WriteLine("");
+                    int number;
+                    bool isNumberGivemoney = Int32.TryParse(Console.ReadLine(), out number);
+                    if (isNumberGivemoney == true)
+                    {
+                        if (number > 0)
+                        {
+                            uint uNumberMoney = Convert.ToUInt32(number);
+                            player.Money.AddMoney(gold: uNumberMoney);
+                            doneMoney = true;
+                        }
+                        Console.Clear();
+                    }
+
+                }
+                if (whichMoneyAdd.Key == ConsoleKey.C)
+                {
+                    Console.WriteLine("How much?");
+                    Console.WriteLine("");
+                    int number;
+                    bool isNumberGivemoney = Int32.TryParse(Console.ReadLine(), out number);
+                    if (isNumberGivemoney == true)
+                    {
+                        if (number > 0)
+                        {
+                            uint uNumberMoney = Convert.ToUInt32(number);
+                            player.Money.AddMoney(silver: uNumberMoney);
+                            doneMoney = true;
+                        }
+                        Console.Clear();
+                    }
+
+                }
+                if (whichMoneyAdd.Key == ConsoleKey.D)
+                {
+                    Console.WriteLine("How much?");
+                    Console.WriteLine("");
+                    int number;
+                    bool isNumberGivemoney = Int32.TryParse(Console.ReadLine(), out number);
+                    if (isNumberGivemoney == true)
+                    {
+                        if (number > 0)
+                        {
+                            uint uNumberMoney = Convert.ToUInt32(number);
+                            player.Money.AddMoney(copper: uNumberMoney);
+                            doneMoney = true;
+                        }
+                        Console.Clear();
+                    }
+
+                }
+                if (player.Money._copper >= UInt32.MaxValue)
+                {
+                    player.Money._copper = uint.MaxValue;
+                }
+                Console.WriteLine("");
+                Console.WriteLine("You now have {0} Platinum, {1} Gold, {2} Silver and {3} Copper!", player.Money.Platinum, player.Money.Gold, player.Money.Silver, player.Money.Copper);
+                Console.ReadLine();
             }
+            //player.Money.AddMoney(copper: copper);
         }
 
         public static void HealMe(PlayerBase player)
         {
+            string CurrentHealth = player.CurrentHealth.ToString();
+            string MaximumHealth = player.MaximumHealth.ToString();
             Console.Clear();
-            Console.WriteLine("{} has {} / {} HP.");
+            Console.WriteLine("{0} has {1} / {2} HP.", player.Name, CurrentHealth, MaximumHealth);
             Console.WriteLine("");
             Console.WriteLine("Heal for?");
+            Console.WriteLine("");
             int healAmount;
             bool isNumberHeal = Int32.TryParse(Console.ReadLine(), out healAmount);
+            if (isNumberHeal == true)
+            {
+                if (player.CurrentHealth + healAmount == player.MaximumHealth || player.CurrentHealth + healAmount > player.MaximumHealth)
+                {
+                    player.CurrentHealth = player.MaximumHealth;
+                }
+                else
+                {
+                    player.CurrentHealth = player.CurrentHealth + healAmount;
+                }
+            }
+            Console.WriteLine("");
+            Console.WriteLine("{0} has {1} / {2} HP.", player.Name, player.CurrentHealth, player.MaximumHealth);
+            Console.ReadLine();
         }
 
         public static void ShowInventory(PlayerBase player)
@@ -85,9 +179,10 @@ namespace LORE.Entities.Mechanics
                 }
             }
         }
-        public static void ShowCharacter(PlayerBase player)
+       
+        public static void Buy(PlayerBase player)
         {
-            
+
         }
     }
 }
